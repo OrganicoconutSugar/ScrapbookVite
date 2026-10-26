@@ -51,4 +51,4 @@ Mulai ulang `npm run dev` setelah mengubah `.env.local`. Progres, durasi, tombol
 
 ## Catatan Git
 
-Saat ini akar repositori Git berada di folder `Documents`, di luar folder proyek ini. Periksa lokasi repositori dengan `git rev-parse --show-toplevel` sebelum menjalankan `git add` agar berkas lain di `Documents` tidak ikut masuk. Migrasi dari Next.js ke Vite juga belum dicatat sebagai commit; tinjau perubahan itu sebelum membuat commit berikutnya.
+Folder `scrapbook-ciam` kini memiliki repositori Git sendiri dengan branch `main` dan remote `https://github.com/OrganicoconutSugar/ScrapbookVite.git`. Jalankan perintah Git dari folder proyek ini agar berkas lain di `Documents` tidak ikut masuk.
