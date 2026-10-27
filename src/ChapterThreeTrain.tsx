@@ -13,8 +13,8 @@ const stops = [
     title: "DEPARTURE",
     caption: "THE JOURNEY CONTINUES",
     body: "Every little beginning brought us here. Let's see where the next track leads.",
-    word: "START",
-    label: "01 / DEPARTURE",
+    imageSrc: "/assets/chapter3-memory-1.jpg",
+    imageAlt: "Pasangan berfoto bersama saat berkendara pada malam hari",
     color: "#8ED8F8",
     highlightColor: "mint" as const,
     rotate: -2,
@@ -24,8 +24,8 @@ const stops = [
     title: "WINDOW SEAT",
     caption: "THE VIEW KEEPS CHANGING",
     body: "New views are even better when I get to share the seat beside you.",
-    word: "LOOK",
-    label: "02 / WINDOW SEAT",
+    imageSrc: "/assets/chapter3-memory-2.jpg",
+    imageAlt: "Maryam beristirahat sambil memeluk bantal",
     color: "#FAED27",
     highlightColor: "yellow" as const,
     rotate: 2,
@@ -35,8 +35,8 @@ const stops = [
     title: "SIDE BY SIDE",
     caption: "THROUGH EVERY TURN",
     body: "The route can bend and change. I still want to keep going with you.",
-    word: "STAY",
-    label: "03 / SIDE BY SIDE",
+    imageSrc: "/assets/chapter3-memory-3.jpg",
+    imageAlt: "Pasangan berfoto melalui cermin di toko",
     color: "#38E4AE",
     highlightColor: "mint" as const,
     rotate: -1,
@@ -46,8 +46,8 @@ const stops = [
     title: "NEXT STOP",
     caption: "WHEREVER WE GO",
     body: "No fixed destination. Just another page we get to make together.",
-    word: "GO ON",
-    label: "04 / NEXT STOP",
+    imageSrc: "/assets/chapter3-memory-4.jpg",
+    imageAlt: "Maryam berfoto dekat pasangannya",
     color: "#E0B0FF",
     highlightColor: "lavender" as const,
     rotate: 1,
@@ -123,18 +123,13 @@ export default function ChapterThreeTrain() {
                 tapeRotate={stop.rotate}
                 className="w-full"
               >
-                <div
-                  className="train-art"
-                  style={{ height: "min(38.5svh, 396px)", background: stop.color }}
-                  aria-hidden="true"
-                >
-                  <span className="train-car-label">CAR {String(index + 1).padStart(2, "0")} / 04</span>
-                  <div className="train-window">
-                    <span className="train-window-word">{stop.word}</span>
-                    <span className="train-window-route">{stop.label}</span>
-                  </div>
-                  <div className="train-art-rail"><span /><span /><span /><span /></div>
-                </div>
+                <img
+                  src={stop.imageSrc}
+                  alt={stop.imageAlt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="chapter-memory-photo w-full object-cover"
+                  style={{ height: "min(38.5svh, 396px)" }}
+                />
               </PolaroidCard>
             </div>
           ))}

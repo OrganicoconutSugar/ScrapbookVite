@@ -185,6 +185,75 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
 }
 
+.love-video-section {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(100px, 13svh, 150px) 24px;
+  overflow: hidden;
+  background: #fff;
+}
+.love-video-player {
+  display: block;
+  width: auto;
+  height: 62svh;
+  max-width: 50vw;
+  max-height: 680px;
+  border-radius: clamp(16px, 2vw, 28px);
+  background: #111;
+  box-shadow: 0 18px 52px rgba(26, 22, 20, 0.16);
+}
+.love-video-note {
+  position: absolute;
+  z-index: 1;
+  color: #252323;
+  font: 400 clamp(28px, 3.6vw, 58px)/1.2 var(--font-romantic);
+}
+.love-video-note-top {
+  top: clamp(30px, 6svh, 70px);
+  left: clamp(24px, 6vw, 96px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+}
+.love-video-heart {
+  width: 0.65em;
+  height: 0.65em;
+  color: var(--ransom-orange);
+  transform: rotate(-10deg);
+}
+.love-video-note-bottom {
+  right: clamp(24px, 6vw, 96px);
+  bottom: clamp(30px, 6svh, 70px);
+  text-align: right;
+}
+.love-video-audio {
+  position: absolute;
+  left: clamp(24px, 6vw, 96px);
+  bottom: clamp(24px, 5svh, 60px);
+  width: clamp(230px, 25vw, 320px);
+}
+.love-video-audio > div {
+  padding-top: 12px;
+}
+@media (max-width: 767px) {
+  .love-video-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 28px 24px;
+  }
+  .love-video-player { align-self: center; height: min(50svh, 480px); max-width: 78vw; }
+  .love-video-note { position: static; font-size: clamp(26px, 7vw, 38px); }
+  .love-video-note-top { align-self: flex-start; }
+  .love-video-note-bottom { align-self: flex-end; }
+  .love-video-audio { position: static; align-self: flex-start; width: min(270px, 100%); }
+}
+
 /* ============================================
    TYPOGRAPHY UTILITIES
    ============================================ */
@@ -482,6 +551,10 @@ body {
   background-position: center 47%;
 }
 
+.chapter-memory-photo {
+  filter: brightness(0.85);
+}
+
 .book-stage {
   background-color: #171717;
   background-image:
@@ -540,53 +613,6 @@ body {
   border: 2px solid #141414;
   background: #FAED27;
 }
-.train-art {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.train-car-label {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  font: 700 11px var(--font-mono);
-  letter-spacing: 0.08em;
-}
-.train-window {
-  width: calc(100% - 52px);
-  height: 68%;
-  border: 3px solid #141414;
-  border-radius: 120px 120px 16px 16px;
-  background: rgba(255, 255, 255, 0.48);
-  box-shadow: 5px 5px 0 #141414;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.train-window-word {
-  font-family: var(--font-ransom);
-  font-size: clamp(44px, 8vw, 84px);
-  line-height: 1;
-  color: #141414;
-  text-align: center;
-}
-.train-window-route {
-  font: 700 10px var(--font-mono);
-  letter-spacing: 0.08em;
-  color: #141414;
-}
-.train-art-rail {
-  position: absolute;
-  bottom: 14px;
-  display: flex;
-  gap: 10px;
-}
-.train-art-rail span { width: 36px; height: 4px; background: #141414; }
-
 /* Chapter 3's two-sided photo below the route note. */
 .chapter-three-photo-block {
   align-self: center;

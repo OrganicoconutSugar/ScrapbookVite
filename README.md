@@ -26,7 +26,9 @@ Hasil build berada di folder `dist/`.
 - Foto penutup dan pesan kaca yang dapat digeser pada bab 4: `src/ChapterFourPhoto.tsx`.
 - Foto wanita tanpa latar dan pesan pop-up di panel kiri bab 4: `src/ChapterFourCutout.tsx` dan `public/assets/chapter4-woman-cutout.png`.
 - Pesan di panel kiri: `src/LeftPane.tsx` dan `src/StarburstButton.tsx`.
-- Foto bab 1: `public/assets/foto1.jpeg` sampai `foto6.jpeg`.
+- Enam foto kartu bab 1: `public/assets/chapter1-memory-1.jpg` sampai `chapter1-memory-6.jpg`, mengikuti urutan gambar yang diberikan. Efek gelap 15% diterapkan pada kartu melalui CSS agar detail foto aslinya tetap utuh.
+- Enam foto kartu bab 2: `public/assets/chapter2-memory-1.jpg` sampai `chapter2-memory-6.jpg`, mengikuti urutan gambar yang diberikan. Efek gelap 15% yang sama diterapkan tanpa blur.
+- Empat foto kartu bab 3: `public/assets/chapter3-memory-1.jpg` sampai `chapter3-memory-4.jpg`, mengikuti urutan gambar yang diberikan. Efek gelap 15% yang sama diterapkan tanpa blur; animasi rangkaian kereta tetap dipakai.
 - Foto depan/belakang di panel kiri bab 3: `public/assets/chapter3-front.jpg` dan `public/assets/chapter3-back.jpg`.
 - Hiasan panel kiri bab 2: `public/assets/chapter2-stitch.png` (dua sisi yang sama berputar otomatis) dan `public/assets/chapter2-arrows-original.png` (sembilan panah diperbesar dalam dua baris). Keduanya ditampilkan dengan putih yang menyatu dengan warna panel; versi panah transparan hasil olahan disimpan di `public/assets/chapter2-arrows.png`.
 - Latar panel kanan bab 1, 2, dan 3: `public/assets/chapter1-birds.png`, `chapter2-roses.png`, dan `chapter3-background.png`.
@@ -41,7 +43,7 @@ Judul CHAPTER pada panel kanan kini memakai huruf kolase warna-warni yang besar 
 
 ## Musik
 
-Berkas yang diberikan untuk scrapbook ini tersimpan sebagai `public/assets/song.aac` dan diputar melalui panel kiri. Jika ingin mengganti sumber audio, letakkan berkas baru di `public/assets/` lalu buat `.env.local` di folder proyek, misalnya:
+Berkas lagu saat ini tersimpan sebagai `public/assets/song-hanya-untukmu.mp3` dan diputar melalui panel kiri serta section video terakhir. Kedua pemutar berbagi progres yang sama. Jika ingin mengganti sumber audio, letakkan berkas baru di `public/assets/` lalu buat `.env.local` di folder proyek, misalnya:
 
 ```env
 VITE_AUDIO_SRC=/assets/lagu-baru.mp3

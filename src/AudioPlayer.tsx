@@ -1,9 +1,15 @@
-import { useRef, useState } from "react";
+import { createContext, useContext, useRef, useState, type ReactNode } from "react";
 
-interface AudioPlayerProps {
-  src?: string;
-  title?: string;
+interface AudioPlayerState {
+  isPlaying: boolean;
+  currentTime: number;
+  duration: number;
+  hasError: boolean;
+  toggle: () => Promise<void>;
+  seek: (time: number) => void;
 }
+
+const AudioPlayerContext = createContext<AudioPlayerState | null>(null);
 
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -12,16 +18,14 @@ function formatTime(seconds: number) {
   return `${minutes}:${remainder.toString().padStart(2, "0")}`;
 }
 
-export default function AudioPlayer({ src, title = "Music for this story" }: AudioPlayerProps) {
+export function AudioPlayerProvider({ src, children }: { src: string; children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [hasError, setHasError] = useState(false);
 
-  if (!src || hasError) return null;
-
-  const handleToggle = async () => {
+  const toggle = async () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
@@ -35,15 +39,15 @@ export default function AudioPlayer({ src, title = "Music for this story" }: Aud
     }
   };
 
-  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const seek = (time: number) => {
     const audio = audioRef.current;
     if (!audio || !duration) return;
-    audio.currentTime = Number(event.target.value);
+    audio.currentTime = time;
     setCurrentTime(audio.currentTime);
   };
 
   return (
-    <div className="mt-auto pt-6 border-t-2 border-[#141414]" style={{ fontFamily: "var(--font-mono)" }}>
+    <AudioPlayerContext.Provider value={{ isPlaying, currentTime, duration, hasError, toggle, seek }}>
       <audio
         ref={audioRef}
         src={src}
@@ -55,14 +59,27 @@ export default function AudioPlayer({ src, title = "Music for this story" }: Aud
         onEnded={() => setCurrentTime(0)}
         onError={() => setHasError(true)}
       />
+      {children}
+    </AudioPlayerContext.Provider>
+  );
+}
+
+export default function AudioPlayer({ title = "Music for this story" }: { title?: string }) {
+  const player = useContext(AudioPlayerContext);
+
+  if (!player || player.hasError) return null;
+
+  const { isPlaying, currentTime, duration, toggle, seek } = player;
+
+  return (
+    <div className="mt-auto pt-6 border-t-2 border-[#141414]" style={{ fontFamily: "var(--font-mono)" }}>
       <p className="text-[11px] text-[#5A5A58] mb-3 italic leading-snug" style={{ fontFamily: "var(--font-body)" }}>
         {title}
       </p>
       <div className="flex items-center gap-3">
         <button
           type="button"
-          id="audio-play-pause"
-          onClick={handleToggle}
+          onClick={toggle}
           aria-label={isPlaying ? "Pause music" : "Play music"}
           className="w-9 h-9 border-2 border-[#141414] bg-[#FF5E3A] flex items-center justify-center flex-shrink-0 transition-all hover:bg-[#e04a29]"
           style={{ boxShadow: "var(--shadow-brutal)" }}
@@ -88,14 +105,13 @@ export default function AudioPlayer({ src, title = "Music for this story" }: Aud
         </span>
       </div>
       <input
-        id="audio-progress-track"
         className="mt-3 w-full accent-[#FF5E3A]"
         type="range"
         min={0}
         max={duration || 0}
         step={1}
         value={Math.min(currentTime, duration || 0)}
-        onChange={handleSeek}
+        onChange={(event) => seek(Number(event.target.value))}
         aria-label="Seek music"
         disabled={!duration}
       />

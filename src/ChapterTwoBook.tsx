@@ -15,7 +15,8 @@ const pages = [
     body: "There are still so many places to see. Let's keep making room for the little discoveries along the way.",
     highlightColor: "mint" as const,
     color: "#38E4AE",
-    word: "GO",
+    imageSrc: "/assets/chapter2-memory-1.jpg",
+    imageAlt: "Pasangan berdiri di tepi sungai pada malam hari",
     rotate: -2,
   },
   {
@@ -25,7 +26,8 @@ const pages = [
     body: "One plan at a time, we can turn the things we talk about into things we make together.",
     highlightColor: "yellow" as const,
     color: "#FAED27",
-    word: "MAKE",
+    imageSrc: "/assets/chapter2-memory-2.jpg",
+    imageAlt: "Pasangan berfoto bersama di kafe",
     rotate: 2,
   },
   {
@@ -35,7 +37,8 @@ const pages = [
     body: "Whatever comes next, I hope we keep learning, trying, and cheering each other on.",
     highlightColor: "lavender" as const,
     color: "#E0B0FF",
-    word: "GROW",
+    imageSrc: "/assets/chapter2-memory-3.jpg",
+    imageAlt: "Pasangan berfoto melalui cermin berhias",
     rotate: -1,
   },
   {
@@ -45,7 +48,8 @@ const pages = [
     body: "Let's save the ordinary days too. They often become the pages we return to most.",
     highlightColor: "mint" as const,
     color: "#8ED8F8",
-    word: "KEEP",
+    imageSrc: "/assets/chapter2-memory-4.jpg",
+    imageAlt: "Pasangan menunjukkan telapak tangan penuh cat",
     rotate: 1,
   },
   {
@@ -55,7 +59,8 @@ const pages = [
     body: "Through changing plans and new beginnings, let's keep making space for each other.",
     highlightColor: "yellow" as const,
     color: "#FF8C70",
-    word: "STAY",
+    imageSrc: "/assets/chapter2-memory-5.jpg",
+    imageAlt: "Maryam memegang buket bunga merah",
     rotate: -2,
   },
   {
@@ -65,7 +70,8 @@ const pages = [
     body: "There is no need to know every page yet. We can write the next one together.",
     highlightColor: "lavender" as const,
     color: "#E0B0FF",
-    word: "NEXT",
+    imageSrc: "/assets/chapter2-memory-6.jpg",
+    imageAlt: "Pasangan saling menatap di dalam ruangan",
     rotate: 2,
   },
 ];
@@ -168,19 +174,13 @@ export default function ChapterTwoBook() {
                 tapeRotate={index % 2 === 0 ? 2 : -2}
                 className="w-full"
               >
-                <div
-                  className="w-full flex flex-col items-center justify-center overflow-hidden"
-                  style={{ height: "min(38.5svh, 396px)", background: page.color }}
-                  aria-hidden="true"
-                >
-                  <span className="font-mono text-sm font-bold tracking-[0.3em] text-[#141414]">
-                    {String(index + 1).padStart(2, "0")} / 06
-                  </span>
-                  <span className="font-ransom text-[clamp(64px,12vw,112px)] leading-none text-[#141414] -rotate-6">
-                    {page.word}
-                  </span>
-                  <span className="font-cursive text-4xl text-[#141414]">↗ future plans ↗</span>
-                </div>
+                <img
+                  src={page.imageSrc}
+                  alt={page.imageAlt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="chapter-memory-photo w-full object-cover"
+                  style={{ height: "min(38.5svh, 396px)" }}
+                />
               </PolaroidCard>
             </div>
           </div>

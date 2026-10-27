@@ -18,7 +18,7 @@ const cards = [
     badgeColor: "#E0B0FF",
     badgeTextColor: "#121212",
     tapeRotate: -2,
-    imageSrc: "/assets/foto1.jpeg",
+    imageSrc: "/assets/chapter1-memory-1.jpg",
   },
   {
     id: "card-research",
@@ -30,7 +30,7 @@ const cards = [
     badgeColor: "#FAED27",
     badgeTextColor: "#121212",
     tapeRotate: 2,
-    imageSrc: "/assets/foto2.jpeg",
+    imageSrc: "/assets/chapter1-memory-2.jpg",
   },
   {
     id: "card-3",
@@ -42,7 +42,7 @@ const cards = [
     badgeColor: "#38E4AE",
     badgeTextColor: "#121212",
     tapeRotate: -1,
-    imageSrc: "/assets/foto3.jpeg",
+    imageSrc: "/assets/chapter1-memory-3.jpg",
   },
   {
     id: "card-4",
@@ -54,7 +54,7 @@ const cards = [
     badgeColor: "#E0B0FF",
     badgeTextColor: "#121212",
     tapeRotate: 3,
-    imageSrc: "/assets/foto4.jpeg",
+    imageSrc: "/assets/chapter1-memory-4.jpg",
   },
   {
     id: "card-5",
@@ -66,7 +66,7 @@ const cards = [
     badgeColor: "#FAED27",
     badgeTextColor: "#121212",
     tapeRotate: -3,
-    imageSrc: "/assets/foto5.jpeg",
+    imageSrc: "/assets/chapter1-memory-5.jpg",
   },
   {
     id: "card-6",
@@ -78,7 +78,7 @@ const cards = [
     badgeColor: "#38E4AE",
     badgeTextColor: "#121212",
     tapeRotate: 1,
-    imageSrc: "/assets/foto6.jpeg",
+    imageSrc: "/assets/chapter1-memory-6.jpg",
   },
 ];
 
@@ -185,7 +185,7 @@ export default function ChapterOneStack() {
                   src={card.imageSrc}
                   alt={card.title}
                   loading={index === 0 ? "eager" : "lazy"}
-                  className="w-full object-cover"
+                  className="chapter-memory-photo w-full object-cover"
                   style={{ height: "min(38.5svh, 396px)" }}
                 />
               </PolaroidCard>

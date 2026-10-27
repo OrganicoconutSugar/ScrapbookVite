@@ -352,8 +352,7 @@ export default function LeftPane({ activeChapter = 1 }: LeftPaneProps) {
 
         {/* ── Retro Audio Player ── */}
         <AudioPlayer
-          src={import.meta.env.VITE_AUDIO_SRC || "/assets/song.aac"}
-          title="Sal Priadi — Mesra-mesraannya kecil-kecilan dulu"
+          title="Feat SalPriadi - Hanya UntukMu"
         />
       </div>
     </aside>
